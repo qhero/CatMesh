@@ -3,6 +3,7 @@
   color="primary"
   [style.width]="'calc(100% / ' + nbrItem + ')'"
   class="vote-button"
+  (click)="onClickVoteThisCat()"
 >
     <img [id]="id" src={{urlImage}} (load)="onImageLoad()" [style.display]="loadingImage ? 'none' : 'block'"/>
 
