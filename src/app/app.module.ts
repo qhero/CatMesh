@@ -14,19 +14,19 @@ import { CatService } from './services/cat.service';
 import { HttpClientModule } from '@angular/common/http';
 import { VoteService } from './services/vote.service';
 import { ScoreboardComponent } from './features/scoreboard/scoreboard.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent, VoteComponent, VoteItemComponent, ScoreboardComponent],
+  declarations: [AppComponent, VoteComponent, VoteItemComponent, ScoreboardComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
-    HeaderComponent,
-    FooterComponent,
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
     MatGridListModule,
     MatButtonModule,
     HttpClientModule,
+    RouterModule
   ],
   providers: [CatService, VoteService],
   bootstrap: [AppComponent],
