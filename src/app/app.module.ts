@@ -12,9 +12,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { CatService } from './services/cat.service';
 import { HttpClientModule } from '@angular/common/http';
+import { VoteService } from './services/vote.service';
+import { ScoreboardComponent } from './features/scoreboard/scoreboard.component';
 
 @NgModule({
-  declarations: [AppComponent, VoteComponent, VoteItemComponent],
+  declarations: [AppComponent, VoteComponent, VoteItemComponent, ScoreboardComponent],
   imports: [
     BrowserModule,
     HeaderComponent,
@@ -26,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     HttpClientModule,
   ],
-  providers: [CatService],
+  providers: [CatService, VoteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { CatModel } from '../model/catModel';
+import { CatModel } from '../model/cat.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

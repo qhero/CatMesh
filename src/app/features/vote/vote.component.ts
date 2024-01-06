@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CatModel } from '../../model/catModel';
+import { CatModel } from '../../model/cat.model';
 import { CatService } from '../../services/cat.service';
+import { RefreshService } from '../../services/refresh.service';
 
 @Component({
   selector: 'app-home-page',
@@ -14,9 +15,21 @@ export class VoteComponent implements OnInit {
   sourceCat: CatModel[] = [];
   elm: CatModel | undefined;
 
-  constructor(private catService: CatService) {}
+  constructor(private catService: CatService, private refreshService: RefreshService) {
+    this.refreshService.refreshEvent.subscribe(() => {
+      this.refreshComponent();
+    });
+  }
 
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  private refreshComponent(): void {
+    this.fetchData();
+  }
+
+  private fetchData(): void{
     this.catService.getImages().subscribe((src) => {
       this.sourceCat = src;
       this.selectRandomCats();

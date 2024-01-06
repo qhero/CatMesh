@@ -1,11 +1,11 @@
 import {
   Component,
   Input,
-  OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
-import { CatModel } from '../../model/catModel';
+import { CatModel } from '../../model/cat.model';
+import { VoteService } from '../../services/vote.service';
+import { RefreshService } from '../../services/refresh.service';
 
 @Component({
   selector: 'app-vote-item',
@@ -21,13 +21,26 @@ export class VoteItemComponent implements OnInit {
   loadingImage: boolean = true;
   loaderUrl: string = './assets/loader.gif'
 
+  constructor(private voteService: VoteService, private refreshService: RefreshService){
+    
+  }
+
   ngOnInit(): void {
     this.id = this.item.id;
     this.urlImage = this.item.url;
   }
 
+  triggerRefresh(): void {
+    this.refreshService.triggerRefresh();
+  }
+
   onImageLoad() {
-    console.log('loade')
     this.loadingImage = false;
+  }
+
+  onClickVoteThisCat(){
+    console.log('click')
+    this.voteService.voteForCat(this.id);
+    this.triggerRefresh();
   }
 }

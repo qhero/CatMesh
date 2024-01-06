@@ -1,1 +1,8 @@
-<p>scoreboard works!</p>
+<div>
+    <h2>Scoreboard</h2>
+    <ul>
+      <li *ngFor="let scoreboard of scoreboard$ | async">
+        Cat {{ scoreboard.catId }}: {{ scoreboard.totalVotes }} votes
+      </li>
+    </ul>
+  </div>

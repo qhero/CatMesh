@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { VoteService } from '../../services/vote.service';
 
 @Component({
   selector: 'app-scoreboard',
-  standalone: true,
   templateUrl: './scoreboard.component.html',
   styleUrl: './scoreboard.component.css'
 })
 export class ScoreboardComponent {
+  scoreboard$ = this.voteService.getScoreboard();
+
+  constructor(private voteService: VoteService) {}
 
 }
