@@ -2,7 +2,8 @@
     <h2>Scoreboard</h2>
     <ul>
       <li *ngFor="let scoreboard of scoreboard$ | async">
-        Cat {{ scoreboard.catId }}: {{ scoreboard.totalVotes }} votes
+        <img class="cat-score-img" [src]="scoreboard.catUrl"/>
+         {{ scoreboard.totalVotes }} vote(s)
       </li>
     </ul>
-  </div>
+</div>
