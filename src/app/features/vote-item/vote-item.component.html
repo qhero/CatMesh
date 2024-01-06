@@ -1,0 +1,13 @@
+<button
+  mat-flat-button
+  color="primary"
+  [style.width]="'calc(100% / ' + nbrItem + ')'"
+  class="vote-button"
+>
+    <img [id]="id" src={{urlImage}} (load)="onImageLoad()" [style.display]="loadingImage ? 'none' : 'block'"/>
+
+  
+  <div *ngIf="loadingImage">
+    <img [src]="loaderUrl" alt="Loading..." />
+  </div>
+</button>
