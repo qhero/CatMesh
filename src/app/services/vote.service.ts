@@ -28,15 +28,15 @@ export class VoteService {
     return this.scoreboardsSubject.value.findIndex((s) => s.catId === catId);
   }
 
-  private updateScoreboard(catId: string, totalVotes: number): void {
+  private updateScoreboard(catId: string, totalVotes: number, catUrl: string): void {
     const index = this.findScoreboardIndex(catId);
 
     if (index !== -1) {
       const scoreboards = [...this.scoreboardsSubject.value];
-      scoreboards[index] = { catId, totalVotes };
+      scoreboards[index] = { catId, totalVotes, catUrl };
       this.saveScoreboard(scoreboards);
     } else {
-      const scoreboards = [...this.scoreboardsSubject.value, { catId, totalVotes }];
+      const scoreboards = [...this.scoreboardsSubject.value, { catId, totalVotes, catUrl}];
       this.saveScoreboard(scoreboards);
     }
   }
@@ -45,7 +45,7 @@ export class VoteService {
     const currentScoreboard = this.scoreboardsSubject.value.find((s) => s.catId === catId);
 
     const newTotalVotes = (currentScoreboard?.totalVotes || 0) + 1;
-    this.updateScoreboard(catId, newTotalVotes);
+    this.updateScoreboard(catId, newTotalVotes, currentScoreboard?.catUrl || '');
   }
 
   getTotalVotesForCat(catId: string): Observable<number> {
