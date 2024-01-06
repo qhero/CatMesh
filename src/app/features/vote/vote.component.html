@@ -1,1 +1,12 @@
-<span>Vote works!</span>
+<div class="container">
+  <div class="container">
+    <ng-container *ngFor="let elm of voteArray">
+      <app-vote-item
+        class="vote-item"
+        *ngIf="elm"
+        [item]="elm"
+        [nbrItem]="voteArray.length"
+      ></app-vote-item>
+    </ng-container>
+  </div>
+</div>
